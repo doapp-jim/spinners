@@ -8,15 +8,15 @@
  */
 
 // TODO: Add background option that creates a ring, disabled by default:
-//       background: { color: '#fff', opacity: .5, padding: 3 }
+//     background: { color: '#000000', opacity: .5, padding: 3 }
 // TODO: Only draw at 60fps for a more accurate rotation time, in some 
 //       cases frames should be skipped.
 // TODO: Add support for simple and complex gradients to the color option:
 //       color: ['#ff000', '#00ff00', '#0000ff']
 //       color: [
-//         { position: .0,  color: '#ff0000', opacity: 1 },
-//         { position: .75, color: '#00ff00', opacity: .5 },
-//         { position: 1,   color: '#0000ff', opacity: 0 }
+//        { position: .0,  color: '#ff0000', opacity: 1 },
+//        { position: .75, color: '#00ff00', opacity: 1 },
+//        { position: 1,   color: '#0000ff', opacity: 1 }
 //       ]
 
 ;var Spinners = {
@@ -371,14 +371,14 @@ function Spinner(element) {
   this._state = 'stopped';
 
   this.setOptions($.extend({
-    color: '#000',
-    dashes:  12,
-    radius: 5,
-    height: 5,
-    width: 1.8,
-    opacity: 1,
-    padding: 3,
-    rotation: 700
+   radius: 20,
+   height: 5,
+   width: 2.9,
+   dashes: 100,
+   opacity: 1,
+   padding: 3,
+   rotation: 700,
+   color: '#4382cc'
   }, arguments[1] || {}));
 
   this.drawPosition(0);
@@ -483,6 +483,10 @@ $.extend(Spinner.prototype, {
       this.ctx.rotate(rotation);
     }
   },
+
+
+
+//Removing opacity on Color.hex2fill removes gradient
 
   drawDash: function(opacity, color) {
     this.ctx.fillStyle = Color.hex2fill(color, opacity);
